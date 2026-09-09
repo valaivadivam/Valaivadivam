@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1A56DB" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <!-- SEO -->
+  <title>Valaivadivam | Design • Web • Branding</title>
+  <meta name="description" content="Valaivadivam provides professional website development, logo design, poster design, branding, social media design and digital solutions." />
+  <meta name="keywords" content="Valaivadivam, வலைவடிவம், website development, logo design, poster design, branding, social media design, digital solutions, digital agency, web design Tamil Nadu" />
+  <meta name="author" content="Valaivadivam" />
+  <link rel="canonical" href="https://valaivadivam.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Valaivadivam" />
+  <meta property="og:title" content="Valaivadivam | Design • Web • Branding" />
+  <meta property="og:description" content="Valaivadivam provides professional website development, logo design, poster design, branding, social media design and digital solutions." />
+  <meta property="og:url" content="https://valaivadivam.com/" />
+  <meta property="og:image" content="https://valaivadivam.com/og-image.png" />
+  <meta property="og:image:alt" content="Valaivadivam — Design, Web and Branding agency" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Valaivadivam | Design • Web • Branding" />
+  <meta name="twitter:description" content="Professional website development, logo design, poster design, branding and social media design." />
+  <meta name="twitter:image" content="https://valaivadivam.com/og-image.png" />
+
+  <!-- Applied before first paint so dark-mode users never see a white flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("vv-theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var l = localStorage.getItem("vv-lang") || "en";
+        document.documentElement.setAttribute("lang", l);
+      } catch (e) { /* private mode — fall back to the light default */ }
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3.3 (CSS) — bundled locally so the site works offline and
+       can't break if a CDN is blocked. Loaded BEFORE our stylesheet so ours wins. -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+
+  <!-- Our styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Valaivadivam",
+    "alternateName": "வலைவடிவம்",
+    "slogan": "Design • Web • Branding",
+    "description": "Valaivadivam provides professional website development, logo design, poster design, branding, social media design and digital solutions.",
+    "url": "https://valaivadivam.com/",
+    "email": "valaivadivam@gmail.com",
+    "telephone": "+918940524235",
+    "sameAs": ["https://instagram.com/valaivadivam"]
+  }
+  </script>
+</head>
+
+<body>
+  <a href="#main" class="skip-link" data-i18n="footer.skip">Skip to content</a>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top vv-navbar" id="navbar" aria-label="Main">
+      <div class="shell d-flex align-items-center justify-content-between w-100">
+        <a class="navbar-brand p-0 m-0" href="#home" aria-label="Valaivadivam — go to top of page">
+          <!-- Two transparent PNGs of the SAME logo. Only the wordmark band
+               differs: the dark file lifts the near-black lettering so it
+               reads on a dark page. The symbol is byte-identical in both. -->
+          <img class="logo-light" src="assets/logo/valaivadivam-logo.png"
+               alt="Valaivadivam — வலைவடிவம் — Design, Web and Branding"
+               width="700" height="463" />
+          <img class="logo-dark" src="assets/logo/valaivadivam-logo-dark.png"
+               alt="" aria-hidden="true" width="700" height="463" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#vvNav" aria-controls="vvNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse flex-grow-0" id="vvNav">
+          <ul class="navbar-nav ms-auto mb-0">
+            <li class="nav-item"><a class="nav-link" href="#home"      data-i18n="nav.home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about"     data-i18n="nav.about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services"  data-i18n="nav.services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#academy"   data-i18n="nav.academy">Academy</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact"   data-i18n="nav.contact">Contact</a></li>
+          </ul>
+
+          <!-- Language + theme controls -->
+          <div class="nav-controls ms-lg-3">
+            <div class="dropdown">
+              <button class="lang-btn dropdown-toggle" type="button" id="lang-btn"
+                      data-bs-toggle="dropdown" aria-expanded="false"
+                      data-i18n-title="nav.language" title="Language">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                     stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/><path d="M3.2 9h17.6M3.2 15h17.6"/>
+                  <path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/>
+                </svg>
+                <span id="lang-current">EN</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end lang-menu" id="lang-menu" aria-labelledby="lang-btn"></ul>
+            </div>
+
+            <button class="icon-btn" type="button" id="theme-toggle" aria-label="Theme">
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.6 8.6 0 1 0 11 11z"/>
+              </svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4.2"/>
+                <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ==================== HERO ==================== -->
+    <section id="home" class="section-hero bg-page overflow-hidden" aria-labelledby="hero-heading">
+      <div class="decor net-motif net-fade" style="opacity:.6" aria-hidden="true"></div>
+      <div class="decor" aria-hidden="true">
+        <div class="blue-glow position-absolute rounded-circle"
+             style="width:28rem;height:28rem;right:-8rem;top:-5rem"></div>
+      </div>
+
+      <div class="shell position-relative">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6">
+            <!-- Brand block: Tamil name, English name, tagline -->
+            <div class="mb-3">
+              <p class="tamil text-blue fw-semibold mb-0" style="font-size:1.15rem;line-height:1.3">வலைவடிவம்</p>
+              <p class="text-navy fw-bold mb-1" style="font-size:1.15rem;letter-spacing:.12em">VALAIVADIVAM</p>
+              <p class="text-slate fw-semibold mb-0 text-uppercase" style="font-size:.68rem;letter-spacing:.22em" data-i18n="hero.tagline">Design • Web • Branding</p>
+            </div>
+
+            <h1 id="hero-heading" class="fw-bold mb-3" style="font-size:clamp(1.95rem,5vw,3.4rem);line-height:1.08">
+              <span data-i18n="hero.titleA">Creative Ideas.</span><br />
+              <span class="text-blue" data-i18n="hero.titleB">Digital Solutions.</span>
+            </h1>
+
+            <p class="tamil text-ink mb-2" style="font-size:.95rem" data-i18n="hero.support">
+              We create a strong digital identity for your business.
+            </p>
+
+            <p class="text-slate mb-4" style="font-size:.95rem;max-width:36rem" data-i18n="hero.text">
+              We create modern websites, powerful brand identities and creative digital
+              designs that help businesses grow.
+            </p>
+
+            <div class="d-flex flex-column flex-sm-row gap-3">
+              <a href="#contact" class="btn-vv">
+                <span data-i18n="common.getStarted">Get Started</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>
+              </a>
+              <a href="#services" class="btn-vv-outline" data-i18n="common.viewServices">View Services</a>
+            </div>
+          </div>
+
+          <!-- Device mockup -->
+          <div class="col-lg-6">
+            <div class="mockup">
+              <div class="decor blue-glow rounded-circle" style="inset:-2rem" aria-hidden="true"></div>
+
+              <div class="mockup-browser">
+                <div class="mockup-bar">
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-url"></span>
+                </div>
+                <!-- Dashboard content. The service chips are rendered by
+                     js/main.js from the SAME VV_SERVICES list the Services
+                     section uses, so they translate with the rest of the site
+                     and can never drift out of sync with the real services. -->
+                <div class="p-3 p-sm-4">
+                  <div class="dash-head">
+                    <img src="assets/logo/valaivadivam-mark.png" alt="" width="440" height="296" class="dash-logo" />
+                    <span class="dash-title" data-i18n="hero.visualTitle">VALAIVADIVAM DIGITAL</span>
+                  </div>
+
+                  <div class="row g-2 mt-3" id="hero-services"></div>
+
+                  <div class="dash-rule"></div>
+
+                  <p class="dash-line-1 mb-0" data-i18n="hero.visualLine1">Creative Design</p>
+                  <p class="dash-line-2 mb-0" data-i18n="hero.visualLine2">Modern Web Experience</p>
+                </div>
+              </div>
+
+              <div class="mockup-phone">
+                <div class="rounded-3 bg-tint p-2">
+                  <span class="d-block mx-auto rounded-pill" style="height:4px;width:32px;background:rgba(11,37,69,.15)"></span>
+                  <div class="d-flex align-items-center justify-content-center bg-page rounded-2 mt-2" style="height:40px">
+                    <img src="assets/logo/valaivadivam-mark.png" alt="" width="440" height="296" style="height:22px;width:auto;object-fit:contain" />
+                  </div>
+                  <div class="d-grid gap-1 mt-2" id="hero-phone-chips"></div>
+                </div>
+              </div>
+
+              <div class="mockup-chip" data-i18n="hero.tagline">Design • Web • Branding</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="section bg-tint overflow-hidden" aria-labelledby="about-heading">
+      <div class="decor dot-motif" style="opacity:.5" aria-hidden="true"></div>
+
+      <div class="shell position-relative">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6 reveal">
+            <span class="eyebrow" data-i18n="about.eyebrow">About us</span>
+            <h2 id="about-heading" class="section-title mt-3" data-i18n="about.title">Build Your Brand With Valaivadivam</h2>
+            <p class="tamil text-blue fw-medium mt-2 mb-3" style="font-size:1rem" data-i18n="about.support">
+              Take your brand to the next level.
+            </p>
+            <p class="text-slate mb-2" style="font-size:.95rem" data-i18n="about.text">
+              At Valaivadivam, we help businesses build a strong digital presence through
+              creative design, modern websites and professional branding solutions.
+            </p>
+            <p class="tamil text-slate mb-0" style="font-size:.92rem" data-i18n="about.text2">
+              From a first website to a complete brand identity, we handle the detail so you can focus on running your business.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="row g-3" id="highlights"><!-- injected by js/main.js --></div>
+          </div>
+        </div>
+
+        <!-- Compact three-step block. Fills the space under the two columns so
+             the section reads as finished rather than cut off. Built by
+             js/main.js from VV_ABOUT_VALUE, so it translates with the site. -->
+        <div class="value-block">
+          <h3 class="value-heading reveal" data-i18n="about.value.title">How We Add Value</h3>
+          <div class="row g-3" id="about-value"><!-- injected by js/main.js --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services" class="section bg-page" aria-labelledby="services-heading">
+      <div class="shell">
+        <div class="text-center mx-auto reveal" style="max-width:42rem">
+          <span class="eyebrow" data-i18n="services.eyebrow">What we do</span>
+          <h2 id="services-heading" class="section-title mt-3" data-i18n="services.title">Our Services</h2>
+          <p class="text-slate mt-2 mb-1" style="font-size:.95rem" data-i18n="services.subtitle">
+            Everything you need to build and grow your digital presence.
+          </p>
+          <p class="tamil text-slate mb-0 d-none" style="font-size:.9rem" data-i18n="services.support"></p>
+        </div>
+
+        <!-- Mobile 1 col · tablet 2 · desktop 3 × 2 -->
+        <div class="row g-3 g-lg-4 mt-3" id="services-grid"><!-- injected by js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE US ==================== -->
+    <section class="section-band bg-tint overflow-hidden" aria-labelledby="why-heading">
+      <div class="decor dot-motif" style="opacity:.5" aria-hidden="true"></div>
+      <div class="shell position-relative">
+        <h2 id="why-heading" class="section-title text-center reveal" style="font-size:1.5rem" data-i18n="why.title">
+          Why Choose Valaivadivam?
+        </h2>
+        <div class="row g-3 mt-3" id="reasons-grid"><!-- injected by js/main.js --></div>
+      </div>
+    </section>
+
+
+    <!-- ==================== VALAIVADIVAM ACADEMY ==================== -->
+    <section id="academy" class="section bg-tint overflow-hidden" aria-labelledby="academy-heading">
+      <div class="decor dot-motif" style="opacity:.5" aria-hidden="true"></div>
+
+      <div class="shell position-relative">
+        <div class="text-center mx-auto reveal" style="max-width:44rem">
+          <span class="eyebrow" data-i18n="academy.eyebrow">Academy</span>
+          <h2 id="academy-heading" class="section-title mt-3" data-i18n="academy.title">VALAIVADIVAM ACADEMY</h2>
+          <p class="text-blue fw-semibold mt-2 mb-1" style="font-size:1rem" data-i18n="academy.subtitle">100% Online IT Training</p>
+          <p class="tamil text-slate mb-0" style="font-size:.9rem" data-i18n="academy.support">
+            Practical IT training through live online classes.
+          </p>
+        </div>
+
+        <!-- Benefits -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mt-4 reveal" id="academy-benefits"></div>
+
+        <!-- Course cards -->
+        <h3 class="text-center fw-semibold mt-4 mb-0" style="font-size:1.05rem" data-i18n="academy.coursesTitle">Our Courses</h3>
+        <div class="row g-3 mt-1" id="courses-grid"></div>
+
+        <!-- Academy CTA -->
+        <div class="cta-band mt-4 reveal">
+          <div class="decor net-motif net-fade" style="opacity:.7" aria-hidden="true"></div>
+          <div class="position-relative d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start">
+            <div>
+              <h3 class="fw-bold mb-1" style="font-size:1.3rem" data-i18n="cta.academyTitle">Looking to Learn? Enquire Now</h3>
+              <p class="text-slate mb-0" style="font-size:.9rem" data-i18n="cta.academyText">Live online classes, real project work and a Course Completion Certificate.</p>
+            </div>
+            <button type="button" class="btn-vv flex-shrink-0" data-course-enquiry=""
+                    data-i18n="cta.academyBtn">Enquire About a Course</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== PORTFOLIO ==================== -->
+    <section id="portfolio" class="section bg-page" aria-labelledby="portfolio-heading">
+      <div class="shell">
+        <div class="text-center mx-auto reveal" style="max-width:42rem">
+          <span class="eyebrow" data-i18n="portfolio.eyebrow">Portfolio</span>
+          <h2 id="portfolio-heading" class="section-title mt-3" data-i18n="portfolio.title">Our Work</h2>
+          <p class="text-slate mt-2 mb-1" style="font-size:.95rem" data-i18n="portfolio.subtitle">
+            Creative work designed to make your brand stand out.
+          </p>
+          <p class="tamil text-slate mb-0 d-none" style="font-size:.9rem" data-i18n="portfolio.support"></p>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center gap-2 mt-4 reveal"
+             id="filters" role="group" aria-label="Filter work by category"><!-- injected --></div>
+
+        <p class="visually-hidden" aria-live="polite" id="folio-status"></p>
+
+        <div class="row g-3 g-lg-4 mt-1" id="folio-grid"><!-- injected by js/main.js --></div>
+
+        <div class="text-center mt-4">
+          <button type="button" class="btn-vv-outline" id="folio-toggle"></button>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <!-- Deliberately NOT in the navbar — reached by scrolling only.
+         Cards are built from VV_TESTIMONIALS in js/data.js. Entries with an
+         empty `review` render as a clearly marked placeholder, so the section
+         can go live before any real feedback exists. -->
+    <section id="testimonials" class="section-band bg-tint overflow-hidden" aria-labelledby="testimonials-heading">
+      <div class="decor dot-motif" style="opacity:.5" aria-hidden="true"></div>
+
+      <div class="shell position-relative">
+        <div class="text-center mx-auto reveal" style="max-width:42rem">
+          <span class="eyebrow" data-i18n="testimonials.eyebrow">Testimonials</span>
+          <h2 id="testimonials-heading" class="section-title mt-3" style="font-size:1.5rem" data-i18n="testimonials.title">What Our Clients Say</h2>
+          <p class="text-slate mt-2 mb-0" style="font-size:.9rem" data-i18n="testimonials.subtitle">
+            Real feedback from the people we work with.
+          </p>
+        </div>
+
+        <div class="row g-3 g-lg-4 mt-2" id="testimonials-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECT CTA (business enquiries) ==================== -->
+    <!-- Separate from the Academy CTA: this one is for client projects and
+         points at the contact form. There is only one of these on the page. -->
+    <section class="section-band bg-page" aria-labelledby="project-cta-heading">
+      <div class="shell">
+        <div class="cta-band reveal">
+          <div class="decor net-motif net-fade" style="opacity:.8" aria-hidden="true"></div>
+          <div class="position-relative d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start">
+            <div>
+              <h2 id="project-cta-heading" class="fw-bold mb-1" style="font-size:1.4rem" data-i18n="cta.businessTitle">Have a Project? Let's Talk</h2>
+              <p class="text-slate mb-0" style="font-size:.92rem" data-i18n="cta.businessText">
+                Tell us what you're building and we'll come back with an approach and a clear quote.
+              </p>
+            </div>
+            <a href="#contact" class="btn-vv flex-shrink-0" data-i18n="cta.businessBtn">Start Your Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLIENT PARTNERS ==================== -->
+    <section id="clients" class="section-band bg-page overflow-hidden" aria-labelledby="clients-heading">
+      <div class="decor dot-motif" style="opacity:.4" aria-hidden="true"></div>
+
+      <div class="shell position-relative">
+        <div class="text-center mx-auto reveal" style="max-width:42rem">
+          <span class="eyebrow" data-i18n="clients.eyebrow">Partners</span>
+          <h2 id="clients-heading" class="section-title mt-3" style="font-size:1.5rem" data-i18n="clients.title">Client Partners</h2>
+          <p class="text-slate mt-2 mb-1" style="font-size:.95rem" data-i18n="clients.subtitle">
+            Businesses we've had the opportunity to work with.
+          </p>
+          <p class="tamil text-slate mb-0 d-none" style="font-size:.9rem" data-i18n="clients.support"></p>
+        </div>
+      </div>
+
+      <!-- Full-bleed strip — it reads better running edge to edge -->
+      <div class="marquee mt-4 position-relative">
+        <div class="marquee-track" id="marquee-track"><!-- injected by js/main.js --></div>
+      </div>
+    </section>
+
+
+    <!-- ==================== OUR PROCESS ==================== -->
+    <section id="process" class="section-band bg-page overflow-hidden" aria-labelledby="process-heading">
+      <div class="shell">
+        <div class="text-center mx-auto reveal" style="max-width:42rem">
+          <span class="eyebrow" data-i18n="process.eyebrow">How we work</span>
+          <h2 id="process-heading" class="section-title mt-3" style="font-size:1.5rem" data-i18n="process.title">Our Process</h2>
+          <p class="text-slate mt-2 mb-0" style="font-size:.9rem" data-i18n="process.subtitle">
+            A clear path from first conversation to finished project.
+          </p>
+        </div>
+        <div class="row g-3 mt-2" id="process-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section id="faq" class="section-band bg-tint overflow-hidden" aria-labelledby="faq-heading">
+      <div class="decor dot-motif" style="opacity:.5" aria-hidden="true"></div>
+
+      <div class="shell position-relative">
+        <div class="text-center mx-auto reveal" style="max-width:42rem">
+          <span class="eyebrow" data-i18n="faq.eyebrow">FAQ</span>
+          <h2 id="faq-heading" class="section-title mt-3" data-i18n="faq.title">Frequently Asked Questions</h2>
+          <p class="text-slate mt-2 mb-0" style="font-size:.9rem" data-i18n="faq.subtitle">
+            Quick answers about our services and our academy.
+          </p>
+        </div>
+
+        <!-- Two columns on desktop, one on mobile. Filled by js/main.js.
+             #faq-grid wraps both columns so the single-open accordion logic
+             treats them as one group. -->
+        <div class="row g-3 g-lg-4 mt-3" id="faq-grid">
+          <div class="col-lg-6" id="faq-col-1"></div>
+          <div class="col-lg-6" id="faq-col-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="section bg-tint" aria-labelledby="contact-heading">
+      <div class="shell">
+        <div class="text-center mx-auto reveal" style="max-width:42rem">
+          <span class="eyebrow" data-i18n="contact.eyebrow">Contact</span>
+          <h2 id="contact-heading" class="section-title mt-3" data-i18n="contact.title">Let's Talk About Your Project</h2>
+          <p class="tamil text-blue fw-medium mt-2 mb-1 d-none" style="font-size:.98rem" data-i18n="contact.support"></p>
+          <p class="text-slate mb-1" style="font-size:.95rem" data-i18n="contact.subtitle">
+            Have a project in mind? Send us your requirements and we'll get back to you.
+          </p>
+          <p class="tamil text-slate mb-0 d-none" style="font-size:.9rem" data-i18n="contact.support2"></p>
+        </div>
+
+        <div class="row g-3 g-lg-4 mt-3">
+          <!-- Left: contact details -->
+          <div class="col-lg-5 reveal">
+            <div class="d-flex flex-column gap-3 h-100">
+              <a class="channel" href="mailto:valaivadivam@gmail.com">
+                <span class="vv-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+                </span>
+                <span class="min-w-0">
+                  <span class="channel-label d-block" data-i18n="contact.email">Email</span>
+                  <span class="channel-value d-block">valaivadivam@gmail.com</span>
+                  <span class="channel-hint d-none d-lg-block" data-i18n="contact.emailHint">Best for detailed briefs and files</span>
+                </span>
+              </a>
+
+              <a class="channel" href="tel:8940524235">
+                <span class="vv-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.2 3.5l2 4-2 1.7a11.5 11.5 0 0 0 6.6 6.6l1.7-2 4 2v3.1a1.6 1.6 0 0 1-1.8 1.6C11.4 19.7 4.3 12.6 3.4 4.3A1.6 1.6 0 0 1 5 2.5h3.2z"/></svg>
+                </span>
+                <span class="min-w-0">
+                  <span class="channel-label d-block" data-i18n="contact.phone">Phone</span>
+                  <span class="channel-value d-block">8940524235</span>
+                  <span class="channel-hint d-none d-lg-block" data-i18n="contact.phoneHint">Call or WhatsApp us directly</span>
+                </span>
+              </a>
+
+              <a class="channel" href="https://instagram.com/valaivadivam" target="_blank" rel="noopener noreferrer">
+                <span class="vv-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1"/></svg>
+                </span>
+                <span class="min-w-0">
+                  <span class="channel-label d-block" data-i18n="contact.instagram">Instagram</span>
+                  <span class="channel-value d-block">@valaivadivam</span>
+                  <span class="channel-hint d-none d-lg-block" data-i18n="contact.instagramHint">See our latest design work</span>
+                </span>
+              </a>
+
+              <!-- Desktop only — on mobile this would push the form off-screen -->
+              <div class="vv-card p-4 d-none d-lg-block">
+                <h3 class="fw-semibold mb-2" style="font-size:.95rem" data-i18n="contact.nextTitle">What happens next</h3>
+                <ol class="list-unstyled mb-0 d-grid gap-2" style="font-size:.85rem">
+                  <li class="d-flex gap-2"><span class="text-blue">✓</span> <span data-i18n="contact.next1">We read your requirements and reply on your preferred channel.</span></li>
+                  <li class="d-flex gap-2"><span class="text-blue">✓</span> <span data-i18n="contact.next2">You get a clear quote and timeline before any work starts.</span></li>
+                  <li class="d-flex gap-2"><span class="text-blue">✓</span> <span data-i18n="contact.next3">We design, you review, and we refine until it's right.</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: enquiry form -->
+          <div class="col-lg-7 reveal">
+            <form class="vv-form p-3 p-sm-4" id="enquiry-form" novalidate aria-labelledby="form-heading">
+              <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2">
+                <h3 id="form-heading" class="fw-semibold mb-0" style="font-size:1.05rem" data-i18n="form.title">Send an enquiry</h3>
+                <p class="mb-0 text-slate" style="font-size:.8rem"><span class="text-blue">*</span> <span data-i18n="common.required">required</span></p>
+              </div>
+
+              <div class="row g-3 mt-1">
+                <div class="col-sm-6">
+                  <label class="vv-label" for="name"><span data-i18n="form.name">Full Name</span> <span class="text-blue">*</span></label>
+                  <input class="vv-input" type="text" id="name" name="name" autocomplete="name"
+                         data-i18n-placeholder="form.namePlaceholder" placeholder="Your name" aria-required="true" aria-describedby="name-error" />
+                  <p class="vv-error" id="name-error"></p>
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="vv-label" for="email"><span data-i18n="form.email">Email Address</span> <span class="text-blue">*</span></label>
+                  <input class="vv-input" type="email" id="email" name="email" autocomplete="email"
+                         inputmode="email" data-i18n-placeholder="form.emailPlaceholder" placeholder="name@example.com" aria-required="true" aria-describedby="email-error" />
+                  <p class="vv-error" id="email-error"></p>
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="vv-label" for="phone"><span data-i18n="form.phone">Phone Number</span> <span class="text-blue">*</span></label>
+                  <input class="vv-input" type="tel" id="phone" name="phone" autocomplete="tel"
+                         inputmode="tel" data-i18n-placeholder="form.phonePlaceholder" placeholder="10-digit mobile number" aria-required="true" aria-describedby="phone-error" />
+                  <p class="vv-error" id="phone-error"></p>
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="vv-label" for="company" data-i18n="form.company">Business / Company Name</label>
+                  <input class="vv-input" type="text" id="company" name="company"
+                         autocomplete="organization" data-i18n-placeholder="common.optional" placeholder="Optional" />
+                </div>
+
+                <div class="col-12">
+                  <label class="vv-label" for="service"><span data-i18n="form.service">Service Required</span> <span class="text-blue">*</span></label>
+                  <select class="vv-input placeholder" id="service" name="service" aria-required="true" aria-describedby="service-error">
+                    <option value="">Choose a service</option>
+                    <option>Website Development</option>
+                    <option>Logo Design</option>
+                    <option>Poster Design</option>
+                    <option>Branding</option>
+                    <option>Social Media Design</option>
+                    <option>Digital Solutions</option>
+                  </select>
+                  <p class="vv-error" id="service-error"></p>
+                </div>
+
+                <!-- Message is OPTIONAL: no asterisk, never validated -->
+                <div class="col-12">
+                  <label class="vv-label" for="message" data-i18n="form.message">Project Details / Message</label>
+                  <textarea class="vv-input" id="message" name="message" rows="3"
+                            data-i18n-placeholder="form.messagePlaceholder" placeholder="Optional — what are you building, and when do you need it?"></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-vv mt-4 w-100 w-sm-auto" id="submit-btn">
+                <span id="submit-label" data-i18n="common.sendEnquiry">Send Enquiry</span>
+                <svg id="submit-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>
+              </button>
+
+              <div class="form-status" id="form-status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-page border-top border-line">
+    <div class="shell py-5">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <img class="logo-light" src="assets/logo/valaivadivam-logo.png"
+               alt="Valaivadivam — வலைவடிவம்" width="700" height="463"
+               style="height:56px;width:auto;object-fit:contain" />
+          <img class="logo-dark" src="assets/logo/valaivadivam-logo-dark.png"
+               alt="" aria-hidden="true" width="700" height="463"
+               style="height:56px;width:auto;object-fit:contain" />
+          <p class="tamil text-blue fw-semibold mt-3 mb-1" style="font-size:.95rem">வலைவடிவம்</p>
+          <p class="text-slate fw-semibold text-uppercase mb-2" style="font-size:.72rem;letter-spacing:.22em" data-i18n="hero.tagline">Design • Web • Branding</p>
+          <p class="text-slate mb-0" style="font-size:.88rem;max-width:24rem" data-i18n="footer.text">
+            VALAIVADIVAM builds websites, logos, posters and brand identities for
+            businesses that want to look professional online.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h2 class="text-navy fw-semibold text-uppercase mb-3" style="font-size:.8rem;letter-spacing:.16em" data-i18n="footer.quickLinks">Quick Links</h2>
+          <ul class="list-unstyled d-grid gap-2 mb-0">
+            <li><a class="footer-link" href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a class="footer-link" href="#about" data-i18n="nav.about">About</a></li>
+            <li><a class="footer-link" href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a class="footer-link" href="#academy" data-i18n="nav.academy">Academy</a></li>
+            <li><a class="footer-link" href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li><a class="footer-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-4">
+          <h2 class="text-navy fw-semibold text-uppercase mb-3" style="font-size:.8rem;letter-spacing:.16em" data-i18n="footer.contact">Contact</h2>
+          <ul class="list-unstyled d-grid gap-2 mb-0">
+            <li><a class="footer-link" href="mailto:valaivadivam@gmail.com">valaivadivam@gmail.com</a></li>
+            <li><a class="footer-link" href="tel:8940524235">8940524235</a></li>
+            <li><a class="footer-link" href="https://valaivadivam.in" target="_blank" rel="noopener noreferrer" data-i18n="footer.website">valaivadivam.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 border-top border-line mt-4 pt-3">
+        <p class="text-slate mb-0" style="font-size:.85rem" data-i18n="footer.rights">© 2026 Valaivadivam. All Rights Reserved.</p>
+        <a class="footer-link text-blue fw-medium" href="#home" data-i18n="footer.backToTop">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==================== COURSE ENQUIRY POPUP ==================== -->
+  <!-- Compact by design: two-up field rows, a short message box and tight
+       spacing, so the whole form fits the viewport without internal scrolling.
+       Bootstrap locks background page scroll while it's open and restores it
+       on close. -->
+  <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered course-modal">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <div class="me-2">
+            <h2 class="modal-title fw-bold" id="courseModalTitle" data-i18n="form.courseTitle">Course Enquiry</h2>
+            <span class="online-pill mt-1">
+              <span data-i18n="common.trainingMode">Training Mode</span>:
+              <span data-i18n="common.onlineMode">100% Online</span>
+            </span>
+          </div>
+          <button type="button" class="close-btn" data-bs-dismiss="modal"
+                  data-i18n-aria="common.close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+
+        <form id="course-form" novalidate>
+          <div class="modal-body">
+            <div class="row g-2 g-sm-3">
+              <div class="col-sm-6">
+                <label class="vv-label" for="c-name"><span data-i18n="form.name">Full Name</span> <span class="text-blue">*</span></label>
+                <input class="vv-input" type="text" id="c-name" name="name" autocomplete="name"
+                       data-i18n-placeholder="form.namePlaceholder" placeholder="Your name"
+                       aria-required="true" aria-describedby="c-name-error" />
+                <p class="vv-error" id="c-name-error"></p>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="vv-label" for="c-phone"><span data-i18n="form.phone">Phone Number</span> <span class="text-blue">*</span></label>
+                <input class="vv-input" type="tel" id="c-phone" name="phone" autocomplete="tel" inputmode="tel"
+                       data-i18n-placeholder="form.phonePlaceholder" placeholder="10-digit mobile number"
+                       aria-required="true" aria-describedby="c-phone-error" />
+                <p class="vv-error" id="c-phone-error"></p>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="vv-label" for="c-email"><span data-i18n="form.email">Email Address</span> <span class="text-blue">*</span></label>
+                <input class="vv-input" type="email" id="c-email" name="email" autocomplete="email" inputmode="email"
+                       data-i18n-placeholder="form.emailPlaceholder" placeholder="name@example.com"
+                       aria-required="true" aria-describedby="c-email-error" />
+                <p class="vv-error" id="c-email-error"></p>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="vv-label" for="c-course"><span data-i18n="form.course">Course</span> <span class="text-blue">*</span></label>
+                <select class="vv-input" id="c-course" name="course" aria-required="true" aria-describedby="c-course-error"></select>
+                <p class="vv-error" id="c-course-error"></p>
+              </div>
+
+              <div class="col-12">
+                <label class="vv-label" for="c-message" data-i18n="form.message">Message / Requirement</label>
+                <textarea class="vv-input" id="c-message" name="message" rows="2"
+                          data-i18n-placeholder="form.courseMessagePlaceholder"
+                          placeholder="Optional — your background, preferred timing, or any question."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-vv w-100 mt-3" id="course-submit">
+              <span id="course-submit-label" data-i18n="common.submitEnquiry">Submit Enquiry</span>
+            </button>
+
+            <div class="form-status" id="course-status" aria-live="polite"></div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PORTFOLIO CASE-STUDY POPUP ==================== -->
+  <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fw-bold" id="projectModalTitle">Project</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  data-i18n-aria="common.close" aria-label="Close"></button>
+        </div>
+        <div class="modal-body modal-scroll-body" id="projectModalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3.3 (JS bundle) — powers the mobile navbar collapse -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Site data + behaviour -->
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

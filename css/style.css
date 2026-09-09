@@ -1,0 +1,1464 @@
+/* ==========================================================================
+   VALAIVADIVAM — custom styles
+   Loaded AFTER Bootstrap, so anything here overrides it.
+   Bootstrap handles: grid, navbar/collapse, buttons, form controls.
+   This file handles: brand colours, typography, section sizing, marquee.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   Change a value here and it updates across the whole site.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand palette — white + blue only */
+  --vv-navy: #0b2545;        /* headings, important text */
+  --vv-ink: #1e3a5f;         /* strong body text */
+  --vv-slate: #4a6079;       /* body copy */
+  --vv-blue: #1a56db;        /* buttons, links, accents */
+  --vv-blue-dark: #1345b5;   /* hover state */
+  --vv-blue-soft: #e8f0fe;   /* light blue blocks */
+  --vv-blue-tint: #f5f8ff;   /* section backgrounds */
+  --vv-line: #e2e8f5;        /* borders and dividers */
+
+  /* Surfaces. Kept separate from the brand palette so Light/Dark mode can
+     swap them without touching a single component rule. */
+  --vv-page: #ffffff;                          /* page background */
+  --vv-surface: #ffffff;                       /* cards, forms, navbar panel */
+  --vv-nav-bg: rgba(255, 255, 255, 0.95);      /* translucent navbar */
+  --vv-tag-bg: rgba(255, 255, 255, 0.95);      /* portfolio category chip */
+  --vv-shadow: rgba(11, 37, 69, 0.4);
+
+  /* Navbar height. Section sizing and scroll offsets both derive from this,
+     so they can never drift apart. Change it in one place only. */
+  --vv-nav-h: 64px;
+
+  /* Bootstrap variable overrides — makes Bootstrap components use our blue */
+  --bs-primary: #1a56db;
+  --bs-primary-rgb: 26, 86, 219;
+  --bs-body-color: #4a6079;
+  --bs-body-font-family: "Inter", system-ui, -apple-system, sans-serif;
+  --bs-border-color: #e2e8f5;
+  --bs-link-color: #1a56db;
+  --bs-link-hover-color: #1345b5;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --vv-nav-h: 72px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* Stops the fixed navbar covering section headings on anchor jumps */
+  /* Deliberately 0. The navbar offset is applied ONCE, via scroll-margin-top
+     on .section / .section-band. Setting it here as well would double it and
+     land every nav click a full navbar-height above the section. */
+  scroll-padding-top: 0;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--vv-page);
+  color: var(--vv-slate);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* guard against horizontal scroll on small screens */
+}
+
+h1, h2, h3, h4 {
+  font-family: "Sora", system-ui, sans-serif;
+  color: var(--vv-navy);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Tamil / mixed-script text.
+   Inter is listed FIRST on purpose: nearly every Tamil line here is mixed
+   script ("உங்கள் Business-க்கு…"). Inter-first keeps the English words in
+   Inter while Tamil characters fall through to Noto Sans Tamil. Reversing
+   the order would render the Latin words in the Tamil face. */
+.tamil {
+  font-family: "Inter", "Noto Sans Tamil", system-ui, sans-serif;
+  line-height: 1.85;
+}
+
+/* Visible, consistent keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--vv-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--vv-blue);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   3. HELPERS
+   -------------------------------------------------------------------------- */
+.text-navy   { color: var(--vv-navy) !important; }
+.text-ink    { color: var(--vv-ink) !important; }
+.text-slate  { color: var(--vv-slate) !important; }
+.text-blue   { color: var(--vv-blue) !important; }
+.bg-tint     { background-color: var(--vv-blue-tint); }
+.bg-soft     { background-color: var(--vv-blue-soft); }
+.border-line { border-color: var(--vv-line) !important; }
+
+.shell {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .shell { padding-inline: 2rem; }
+}
+
+/* Small blue pill above each section heading */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--vv-line);
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vv-blue);
+  background: var(--vv-surface);
+}
+
+.bg-tint .eyebrow { background: var(--vv-surface); }
+.bg-white .eyebrow { background: var(--vv-blue-tint); }
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+@media (min-width: 576px) { .section-title { font-size: 1.85rem; } }
+@media (min-width: 992px) { .section-title { font-size: 2.1rem; } }
+
+/* --------------------------------------------------------------------------
+   4. DECORATIVE MOTIFS
+   The "valai" (net) lattice — the brand's own idea of a web, kept faint.
+   -------------------------------------------------------------------------- */
+.net-motif {
+  background-image:
+    linear-gradient(to right, var(--vv-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--vv-line) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.net-fade {
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 78%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 78%);
+}
+
+.dot-motif {
+  background-image: radial-gradient(var(--vv-line) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.blue-glow {
+  background: radial-gradient(circle at center, var(--vv-blue-soft) 0%, rgba(232, 240, 254, 0) 70%);
+}
+
+.decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   5. SECTION SIZING
+   A section fills the space below the navbar and centres its content.
+   min-height (not height) means a section that genuinely needs more room
+   grows instead of clipping — nothing is ever cut off.
+   Padding scales with viewport height, so a 768px laptop gets tight padding
+   and a 1080p monitor gets generous padding, from the same rule.
+   -------------------------------------------------------------------------- */
+.section {
+  position: relative;
+  /* Still at least a screen tall, so short sections don't look like stubs
+     while scrolling normally — but the content sits at the TOP, not centred.
+     Centring was what pushed headings into the middle of the viewport and
+     left a blank band above them after a nav click. */
+  min-height: calc(100vh - var(--vv-nav-h)); /* fallback */
+  min-height: calc(100svh - var(--vv-nav-h));
+  /* +1px covers the navbar's bottom border, so the heading never tucks under it */
+  scroll-margin-top: calc(var(--vv-nav-h) + 1px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-block: clamp(2rem, 5vh, 3.75rem);
+}
+
+/* The hero sits under the fixed navbar, so it carries the offset as padding */
+.section-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--vv-nav-h) + clamp(0.75rem, 3vh, 2rem));
+  padding-bottom: clamp(1.5rem, 4vh, 3.5rem);
+}
+
+/* A short band between full sections — deliberately not viewport-sized */
+.section-band {
+  position: relative;
+  padding-block: clamp(2rem, 5vh, 3.5rem);
+  scroll-margin-top: calc(var(--vv-nav-h) + 1px);
+}
+
+/* --------------------------------------------------------------------------
+   6. NAVBAR
+   -------------------------------------------------------------------------- */
+.vv-navbar {
+  height: var(--vv-nav-h);
+  background: var(--vv-nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(226, 232, 245, 0.6);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.vv-navbar.is-scrolled {
+  border-bottom-color: var(--vv-line);
+  box-shadow: 0 1px 16px rgba(11, 37, 69, 0.07);
+}
+
+.vv-navbar .navbar-brand img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .vv-navbar .navbar-brand img { height: 42px; }
+}
+
+.vv-navbar .nav-link {
+  position: relative;
+  color: var(--vv-ink);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
+}
+
+.vv-navbar .nav-link:hover,
+.vv-navbar .nav-link.active {
+  color: var(--vv-blue);
+}
+
+/* Active underline — scales in from the left */
+.vv-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.25rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--vv-blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.vv-navbar .nav-link.active::after { transform: scaleX(1); }
+
+/* Hamburger — Bootstrap's toggler, restyled */
+.vv-navbar .navbar-toggler {
+  border: 1px solid var(--vv-line);
+  border-radius: 0.75rem;
+  padding: 0.45rem 0.6rem;
+}
+
+.vv-navbar .navbar-toggler:focus { box-shadow: none; }
+
+/* Mobile dropdown panel */
+@media (max-width: 991.98px) {
+  #vvNav {
+    background: var(--vv-surface);
+    border-top: 1px solid var(--vv-line);
+    border-bottom: 1px solid var(--vv-line);
+    box-shadow: 0 12px 24px -18px rgba(11, 37, 69, 0.4);
+    padding: 0.5rem 1.25rem 0.75rem;
+    margin-inline: -1.25rem;
+  }
+
+  .vv-navbar .nav-link {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .vv-navbar .nav-link.active {
+    background: var(--vv-blue-soft);
+  }
+
+  .vv-navbar .nav-link::after { display: none; }
+}
+
+/* Skip link — visible only on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1080;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 0.75rem;
+  background: var(--vv-blue);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. BUTTONS
+   -------------------------------------------------------------------------- */
+.btn-vv {
+  background: var(--vv-blue);
+  color: #fff;
+  border: 1px solid var(--vv-blue);
+  text-decoration: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-vv:hover,
+.btn-vv:focus { background: var(--vv-blue-dark); border-color: var(--vv-blue-dark); color: #fff; text-decoration: none; }
+.btn-vv:active { transform: translateY(1px); }
+.btn-vv:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-vv-outline {
+  background: var(--vv-surface);
+  color: var(--vv-navy);
+  border: 1px solid var(--vv-line);
+  text-decoration: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-vv-outline:hover,
+.btn-vv-outline:focus { border-color: var(--vv-blue); color: var(--vv-blue); text-decoration: none; }
+.btn-vv-outline:active { transform: translateY(1px); }
+
+/* --------------------------------------------------------------------------
+   8. CARDS
+   -------------------------------------------------------------------------- */
+.vv-card {
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1rem;
+  height: 100%;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vv-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(26, 86, 219, 0.45);
+  box-shadow: 0 14px 34px -24px rgba(11, 37, 69, 0.4);
+}
+
+.vv-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: var(--vv-blue-soft);
+  color: var(--vv-blue);
+  flex-shrink: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.vv-card:hover .vv-icon { background: var(--vv-blue); color: #fff; }
+.vv-icon svg { width: 1.25rem; height: 1.25rem; }
+
+/* --------------------------------------------------------------------------
+   9. HERO VISUAL (browser + phone mockup)
+   -------------------------------------------------------------------------- */
+.mockup { position: relative; max-width: 520px; margin-inline: auto; }
+
+.mockup-browser {
+  position: relative;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1rem;
+  box-shadow: 0 28px 70px -32px rgba(11, 37, 69, 0.42);
+}
+
+.mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--vv-line);
+}
+
+.mockup-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--vv-blue-soft); }
+.mockup-url { flex: 1; height: 20px; border-radius: 6px; background: var(--vv-blue-tint); margin-left: 0.5rem; }
+.bar-line { display: block; border-radius: 999px; background: rgba(11, 37, 69, 0.09); height: 12px; }
+
+.mockup-phone {
+  position: absolute;
+  bottom: -2rem;
+  left: -1.5rem;
+  width: 124px;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1.4rem;
+  padding: 0.5rem;
+  box-shadow: 0 22px 50px -26px rgba(11, 37, 69, 0.5);
+}
+
+.mockup-chip {
+  position: absolute;
+  top: -1rem;
+  right: -0.75rem;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  box-shadow: 0 14px 34px -22px rgba(11, 37, 69, 0.5);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vv-blue);
+}
+
+@media (max-width: 575.98px) { .mockup-phone { display: none; } }
+@media (max-width: 991.98px) { .mockup-chip { display: none; } }
+
+/* --------------------------------------------------------------------------
+   10. PORTFOLIO
+   -------------------------------------------------------------------------- */
+.filter-btn {
+  border: 1px solid var(--vv-line);
+  background: var(--vv-surface);
+  color: var(--vv-ink);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 576px) { .filter-btn { padding: 0.5rem 1rem; font-size: 0.875rem; } }
+
+.filter-btn:hover { border-color: var(--vv-blue); color: var(--vv-blue); }
+.filter-btn.active { background: var(--vv-blue); border-color: var(--vv-blue); color: #fff; }
+
+.folio-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--vv-blue-tint);
+  border-radius: 1rem 1rem 0 0;
+}
+
+@media (min-width: 992px) { .folio-media { aspect-ratio: 16 / 9; } }
+
+.folio-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.vv-card:hover .folio-media img { transform: scale(1.04); }
+
+.folio-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: var(--vv-nav-bg);
+  color: var(--vv-blue);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.folio-item.is-hidden { display: none; }
+
+/* --------------------------------------------------------------------------
+   11. CLIENT MARQUEE
+   The track holds the logo list twice. Sliding it exactly -50% lands the
+   second copy where the first started, so the loop is seamless and there
+   is never a visible gap.
+   -------------------------------------------------------------------------- */
+@keyframes vv-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee {
+  overflow: hidden;
+  /* Fade the edges so logos enter and leave softly instead of clipping */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: vv-marquee var(--marquee-duration, 42s) linear infinite;
+}
+
+/* Pause on hover — pointer devices only, so it never traps touch users */
+@media (hover: hover) and (pointer: fine) {
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+}
+
+.client-card {
+  /* Spacing is margin on each card, never `gap` on the track: gap would make
+     the two passes unequal in width and the -50% slide would jump by half a
+     gap on every loop. */
+  margin-inline: 0.375rem;
+  flex-shrink: 0;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.25rem;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px -20px rgba(11, 37, 69, 0.5);
+  transition: border-color 0.2s ease;
+}
+
+.client-card:hover { border-color: rgba(26, 86, 219, 0.4); }
+
+.client-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+@media (min-width: 576px) {
+  .client-card { width: 192px; height: 96px; margin-inline: 0.5rem; }
+}
+
+@media (min-width: 992px) {
+  .client-card { width: 224px; height: 112px; margin-inline: 0.625rem; }
+}
+
+/* --------------------------------------------------------------------------
+   12. FORM
+   -------------------------------------------------------------------------- */
+.vv-form { background: var(--vv-surface); border: 1px solid var(--vv-line); border-radius: 1rem; }
+
+.vv-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--vv-navy);
+}
+
+.vv-input {
+  width: 100%;
+  border: 1px solid var(--vv-line);
+  border-radius: 0.75rem;
+  background: var(--vv-surface);
+  padding: 0.6rem 0.85rem;
+  font-size: 0.9rem;
+  color: var(--vv-navy);
+  transition: border-color 0.2s ease;
+}
+
+.vv-input::placeholder { color: rgba(74, 96, 121, 0.6); }
+.vv-input:hover { border-color: rgba(26, 86, 219, 0.5); }
+.vv-input:focus { border-color: var(--vv-blue); outline: none; }
+.vv-input.is-invalid { border-color: #dc3545; }
+select.vv-input:invalid, select.vv-input.placeholder { color: rgba(74, 96, 121, 0.7); }
+
+.vv-error {
+  display: none;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #dc3545;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.vv-error.show { display: flex; }
+
+.form-status {
+  display: none;
+  margin-top: 0.75rem;
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.85rem;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.form-status.show { display: flex; }
+.form-status.success { background: var(--vv-blue-soft); border: 1px solid rgba(26, 86, 219, 0.3); color: var(--vv-blue); font-weight: 500; }
+.form-status.error { background: #fdf2f2; border: 1px solid #f5c6cb; color: #a71d2a; }
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: vv-spin 0.7s linear infinite;
+}
+
+@keyframes vv-spin { to { transform: rotate(360deg); } }
+
+/* --------------------------------------------------------------------------
+   13. CONTACT CHANNELS
+   -------------------------------------------------------------------------- */
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1rem;
+  padding: 0.875rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.channel:hover {
+  transform: translateY(-2px);
+  border-color: rgba(26, 86, 219, 0.45);
+  box-shadow: 0 12px 30px -24px rgba(11, 37, 69, 0.45);
+}
+
+.channel:hover .vv-icon { background: var(--vv-blue); color: #fff; }
+.channel-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--vv-slate); }
+.channel-value { font-size: 0.95rem; font-weight: 600; color: var(--vv-navy); word-break: break-word; }
+.channel:hover .channel-value { color: var(--vv-blue); }
+.channel-hint { font-size: 0.82rem; color: var(--vv-slate); }
+
+@media (min-width: 992px) { .channel { align-items: flex-start; padding: 1.25rem; } }
+
+/* --------------------------------------------------------------------------
+   14. SCROLL REVEAL
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   15. FOOTER
+   -------------------------------------------------------------------------- */
+.footer-link { color: var(--vv-slate); text-decoration: none; font-size: 0.95rem; transition: color 0.2s ease; }
+.footer-link:hover { color: var(--vv-blue); }
+
+/* --------------------------------------------------------------------------
+   16. REDUCED MOTION
+   Respect the visitor's system preference. A continuously moving marquee is
+   exactly what this setting is for, so it stops and scrolls by hand instead.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .reveal { opacity: 1; transform: none; transition: none; }
+
+  .marquee-track { animation: none; }
+  .marquee { overflow-x: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   17. DARK MODE
+   Set on <html data-theme="dark">. Because every component already draws its
+   colours from the variables above, the whole site re-themes by overriding
+   the tokens here — no component rule is duplicated.
+   ========================================================================== */
+[data-theme="dark"] {
+  /* Surfaces */
+  --vv-page: #0b1524;
+  --vv-surface: #142438;
+  --vv-nav-bg: rgba(11, 21, 36, 0.94);
+  --vv-tag-bg: rgba(20, 36, 56, 0.95);
+  --vv-shadow: rgba(0, 0, 0, 0.6);
+
+  /* Text — inverted, keeping the same roles */
+  --vv-navy: #eef4fc;   /* headings */
+  --vv-ink: #d5e2f2;    /* strong body text */
+  --vv-slate: #a3b6cd;  /* body copy */
+
+  /* Brand blue lifted slightly: #1A56DB is too dark to read on a dark page */
+  --vv-blue: #5b8dff;
+  --vv-blue-dark: #7aa4ff;
+  --vv-blue-soft: #1b2f4d;
+  --vv-blue-tint: #101d30;
+  --vv-line: #24384f;
+
+  /* Bootstrap's own variables follow along */
+  --bs-primary: #5b8dff;
+  --bs-primary-rgb: 91, 141, 255;
+  --bs-body-color: #a3b6cd;
+  --bs-border-color: #24384f;
+  --bs-link-color: #5b8dff;
+  --bs-link-hover-color: #7aa4ff;
+  --bs-emphasis-color: #eef4fc;
+}
+
+/* A filled blue button needs dark text in dark mode — white on #5B8DFF is
+   below the contrast threshold. */
+[data-theme="dark"] .btn-vv,
+[data-theme="dark"] .filter-btn.active {
+  color: #0b1524;
+}
+
+[data-theme="dark"] .btn-vv .spinner {
+  border-color: rgba(11, 21, 36, 0.35);
+  border-top-color: #0b1524;
+}
+
+[data-theme="dark"] .vv-card:hover .vv-icon,
+[data-theme="dark"] .channel:hover .vv-icon {
+  color: #0b1524;
+}
+
+/* The hero mockup's grey bars need to read as light-on-dark */
+[data-theme="dark"] .bar-line { background: rgba(255, 255, 255, 0.12); }
+
+/* Bootstrap's hamburger icon is a dark SVG — invert it */
+[data-theme="dark"] .navbar-toggler-icon {
+  filter: invert(1) brightness(1.6);
+}
+
+/* Error colours that stay legible on a dark surface */
+[data-theme="dark"] .vv-error,
+[data-theme="dark"] .form-status.error { color: #ff9aa2; }
+[data-theme="dark"] .vv-input.is-invalid { border-color: #ff6b74; }
+[data-theme="dark"] .form-status.error { background: #2a1519; border-color: #5c2a30; }
+
+/* Smooth the switch, but never fight a reduced-motion preference */
+@media (prefers-reduced-motion: no-preference) {
+  body, .vv-card, .vv-input, .vv-form, .channel, .client-card, .vv-navbar {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* ==========================================================================
+   17b. LOGO — light / dark asset swap
+   Both files are the same transparent-background logo. Only the wordmark band
+   differs, so the near-black lettering stays readable on a dark page. The
+   symbol is identical in both files. Swapped in CSS, not JS, so it is already
+   correct on first paint.
+   ========================================================================== */
+.logo-dark { display: none; }
+[data-theme="dark"] .logo-light { display: none; }
+[data-theme="dark"] .logo-dark { display: inline-block; }
+
+/* The device mockup in the hero represents a website, which is white — so it
+   keeps light surfaces in both themes. Re-scoping the tokens here re-lights
+   every child in one go, including the logo mark inside it. */
+[data-theme="dark"] .mockup-browser,
+[data-theme="dark"] .mockup-phone {
+  --vv-surface: #ffffff;
+  --vv-page: #ffffff;
+  --vv-blue-tint: #f5f8ff;
+  --vv-blue-soft: #e8f0fe;
+  --vv-line: #e2e8f5;
+  --vv-navy: #0b2545;
+}
+
+[data-theme="dark"] .mockup-browser .bar-line,
+[data-theme="dark"] .mockup-phone .bar-line {
+  background: rgba(11, 37, 69, 0.09);
+}
+
+/* ==========================================================================
+   18. NAVBAR CONTROLS — language + theme
+   ========================================================================== */
+.nav-controls { display: flex; align-items: center; gap: 0.5rem; }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--vv-line);
+  border-radius: 0.75rem;
+  background: var(--vv-surface);
+  color: var(--vv-navy);
+  padding: 0;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.icon-btn:hover { border-color: var(--vv-blue); color: var(--vv-blue); }
+.icon-btn svg { width: 1.1rem; height: 1.1rem; }
+
+/* Only one of the two theme glyphs shows at a time */
+[data-theme="dark"] .icon-moon { display: none; }
+:root:not([data-theme="dark"]) .icon-sun { display: none; }
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 2.5rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--vv-line);
+  border-radius: 0.75rem;
+  background: var(--vv-surface);
+  color: var(--vv-navy);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-btn:hover { border-color: var(--vv-blue); color: var(--vv-blue); }
+.lang-btn::after { display: none; }  /* drop Bootstrap's caret */
+
+.lang-menu {
+  border: 1px solid var(--vv-line);
+  border-radius: 0.85rem;
+  background: var(--vv-surface);
+  padding: 0.35rem;
+  min-width: 9.5rem;
+  box-shadow: 0 18px 40px -26px var(--vv-shadow);
+}
+
+.lang-menu .dropdown-item {
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  color: var(--vv-ink);
+}
+
+.lang-menu .dropdown-item:hover,
+.lang-menu .dropdown-item:focus { background: var(--vv-blue-tint); color: var(--vv-blue); }
+.lang-menu .dropdown-item.active { background: var(--vv-blue-soft); color: var(--vv-blue); font-weight: 600; }
+
+/* On mobile the controls sit in the collapsed panel, so give them room */
+@media (max-width: 991.98px) {
+  .nav-controls { margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--vv-line); }
+}
+
+/* ==========================================================================
+   19. ACADEMY
+   ========================================================================== */
+.benefit-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem 0.45rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--vv-ink);
+}
+
+.benefit-chip .vv-icon { width: 1.75rem; height: 1.75rem; border-radius: 0.6rem; }
+.benefit-chip .vv-icon svg { width: 0.95rem; height: 0.95rem; }
+
+.course-card { display: flex; flex-direction: column; }
+.course-points { list-style: none; padding: 0; margin: 0.75rem 0 0; display: grid; gap: 0.3rem; }
+
+.course-points li {
+  display: flex;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--vv-slate);
+  line-height: 1.5;
+}
+
+.course-points li::before {
+  content: "✓";
+  color: var(--vv-blue);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.online-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--vv-blue-soft);
+  color: var(--vv-blue);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   20. PROCESS — 3 x 2 grid
+   Compact cards with an oversized ghost step number, a hairline connector
+   between cards in the same row, and a blue rule that draws in on hover.
+   ========================================================================== */
+.process-step {
+  position: relative;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1rem;
+  padding: 1.1rem 1.1rem 1rem;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Blue rule across the top, revealed on hover */
+.process-step::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--vv-blue), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-step:hover {
+  transform: translateY(-3px);
+  border-color: rgba(26, 86, 219, 0.45);
+  box-shadow: 0 16px 36px -26px var(--vv-shadow);
+}
+
+.process-step:hover::before { transform: scaleX(1); }
+
+.process-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.process-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.7rem;
+  background: var(--vv-blue-soft);
+  color: var(--vv-blue);
+  flex-shrink: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.process-icon svg { width: 1.1rem; height: 1.1rem; }
+.process-step:hover .process-icon { background: var(--vv-blue); color: var(--vv-surface); }
+[data-theme="dark"] .process-step:hover .process-icon { color: #0b1524; }
+
+/* Oversized ghost numeral — carries the sequence without shouting */
+.process-num {
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--vv-blue);
+  opacity: 0.16;
+  letter-spacing: -0.03em;
+}
+
+.process-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+}
+
+.process-text {
+  font-size: 0.82rem;
+  color: var(--vv-slate);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Hairline connector between cards in the same row. Drawn only between
+   columns, so it never dangles off the end of a row or on mobile. */
+@media (min-width: 992px) {
+  .process-step::after {
+    content: "";
+    position: absolute;
+    top: 2.15rem;
+    right: -1.5rem;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--vv-line);
+  }
+  /* No connector after the 3rd and 6th cards (end of each row) */
+  #process-grid > div:nth-child(3n) .process-step::after { display: none; }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .process-step::after {
+    content: "";
+    position: absolute;
+    top: 2.15rem;
+    right: -1.5rem;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--vv-line);
+  }
+  #process-grid > div:nth-child(2n) .process-step::after { display: none; }
+}
+
+/* ==========================================================================
+   21. FAQ ACCORDION
+   ========================================================================== */
+.accordion-item {
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 0.85rem !important;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.accordion-button {
+  background: var(--vv-surface);
+  color: var(--vv-navy);
+  font-family: "Sora", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  padding: 0.75rem 0.9rem;
+  box-shadow: none;
+  /* Two columns means less width, so questions may wrap to two lines */
+  text-align: left;
+}
+
+.accordion-button:not(.collapsed) {
+  background: var(--vv-blue-tint);
+  color: var(--vv-blue);
+  box-shadow: none;
+}
+
+.accordion-button:focus { box-shadow: none; border-color: var(--vv-blue); }
+.accordion-button::after { width: 1rem; height: 1rem; background-size: 1rem; }
+[data-theme="dark"] .accordion-button::after { filter: invert(1) brightness(1.7); }
+
+.accordion-body {
+  color: var(--vv-slate);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  padding: 0 0.9rem 0.85rem;
+}
+
+.accordion-item { margin-bottom: 0.6rem; }
+.accordion-item:last-child { margin-bottom: 0; }
+
+/* The chevron must not shrink when a question wraps to two lines */
+.accordion-button::after { flex-shrink: 0; margin-left: 0.6rem; }
+
+/* ==========================================================================
+   22. CTA BANDS
+   ========================================================================== */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  background: var(--vv-blue-tint);
+  border: 1px solid var(--vv-line);
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.25rem;
+}
+
+@media (min-width: 768px) { .cta-band { padding: 2rem 2.5rem; } }
+
+/* ==========================================================================
+   23. MODALS
+   ========================================================================== */
+.modal-content {
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1.1rem;
+}
+
+.modal-header, .modal-footer { border-color: var(--vv-line); }
+.modal-title { font-size: 1.05rem; }
+[data-theme="dark"] .btn-close { filter: invert(1) grayscale(1) brightness(1.8); }
+
+/* The course form is deliberately compact — two-up rows, a short message box,
+   tight spacing — so it fits the viewport whole. Nothing inside scrolls. */
+.course-modal { max-width: 33rem; }
+
+.course-modal .modal-header {
+  position: relative;
+  align-items: flex-start;
+  padding: 1rem 1.15rem 0.75rem;
+  padding-right: 3.6rem;   /* room for the close button */
+}
+
+/* Always the top-right corner, on every screen size */
+.course-modal .close-btn {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.9rem;
+  margin: 0;
+}
+
+.course-modal .modal-body { padding: 0.9rem 1.15rem 1.15rem; }
+.course-modal .vv-label { margin-bottom: 0.2rem; font-size: 0.78rem; }
+.course-modal .vv-input { padding: 0.5rem 0.75rem; font-size: 0.88rem; }
+.course-modal .vv-error { font-size: 0.75rem; margin-top: 0.15rem; }
+.course-modal .modal-title { font-size: 1rem; }
+
+/* A close control that is unmistakably a close control, at a comfortable
+   tap size, and always visible because nothing scrolls past it. */
+.close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  flex-shrink: 0;
+  border: 1px solid var(--vv-line);
+  border-radius: 0.65rem;
+  background: var(--vv-surface);
+  color: var(--vv-navy);
+  padding: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.close-btn svg { width: 1.05rem; height: 1.05rem; }
+.close-btn:hover { border-color: var(--vv-blue); color: var(--vv-blue); background: var(--vv-blue-tint); }
+
+/* Short phones: shave the spacing further rather than introduce a scrollbar */
+@media (max-width: 575.98px) {
+  .modal-dialog { margin: 0.5rem; }
+  .course-modal .modal-header { padding: 0.8rem 0.9rem 0.6rem; padding-right: 3.2rem; }
+  .course-modal .close-btn { top: 0.7rem; right: 0.7rem; }
+  .course-modal .modal-body { padding: 0.7rem 0.9rem 0.9rem; }
+  .course-modal .vv-input { padding: 0.45rem 0.7rem; }
+}
+
+@media (max-height: 700px) {
+  .course-modal .vv-input { padding: 0.4rem 0.7rem; font-size: 0.85rem; }
+  .course-modal .modal-body { padding-top: 0.6rem; }
+  .course-modal textarea.vv-input { min-height: 3.2rem; }
+}
+
+/* The case-study popup CAN be long (it is a full write-up), so that one keeps
+   a scrolling body. The course form does not. */
+.modal-scroll-body { max-height: 70vh; overflow-y: auto; }
+
+/* Case-study rows in the portfolio detail popup */
+.case-row { display: grid; gap: 0.15rem; padding: 0.6rem 0; border-top: 1px solid var(--vv-line); }
+.case-row:first-child { border-top: 0; }
+.case-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vv-blue); }
+.case-value { font-size: 0.9rem; color: var(--vv-slate); }
+
+/* Themed replacement for Bootstrap's fixed .bg-white */
+.bg-page { background-color: var(--vv-page); }
+
+/* ==========================================================================
+   24. HERO DASHBOARD
+   The content inside the browser mockup. It shows the real service list
+   rather than grey placeholder bars, so the visual says what the studio
+   actually does. The mockup already re-scopes its colour tokens to light
+   values in dark mode, so everything here works in both themes unchanged.
+   ========================================================================== */
+.dash-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--vv-line);
+}
+
+.dash-logo { height: 26px; width: auto; object-fit: contain; flex-shrink: 0; }
+
+.dash-title {
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--vv-navy);
+}
+
+/* Service chip */
+.dash-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 100%;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid var(--vv-line);
+  border-radius: 0.6rem;
+  background: linear-gradient(140deg, var(--vv-blue-tint), var(--vv-surface));
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  /* Gentle staggered entrance, in keeping with the site's other animations */
+  animation: dash-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dash-chip:hover { border-color: rgba(26, 86, 219, 0.45); transform: translateY(-1px); }
+
+.dash-chip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 0.4rem;
+  background: var(--vv-blue-soft);
+  color: var(--vv-blue);
+  flex-shrink: 0;
+}
+
+.dash-chip-icon svg { width: 0.8rem; height: 0.8rem; }
+
+.dash-chip-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--vv-navy);
+}
+
+@media (min-width: 1200px) {
+  .dash-chip-label { font-size: 0.68rem; }
+  .dash-chip { padding: 0.55rem 0.65rem; }
+}
+
+/* Phone version — tighter still */
+.dash-chip-sm { padding: 0.28rem 0.3rem; border-radius: 0.45rem; gap: 0.3rem; }
+.dash-chip-sm .dash-chip-icon { width: 0.95rem; height: 0.95rem; border-radius: 0.3rem; }
+.dash-chip-sm .dash-chip-icon svg { width: 0.58rem; height: 0.58rem; }
+.dash-chip-sm .dash-chip-label { font-size: 0.44rem; }
+
+.dash-rule {
+  height: 1px;
+  margin: 0.9rem 0 0.75rem;
+  background: linear-gradient(to right, var(--vv-line), transparent);
+}
+
+.dash-line-1 {
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--vv-navy);
+  line-height: 1.2;
+}
+
+.dash-line-2 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--vv-blue);
+  line-height: 1.2;
+}
+
+@keyframes dash-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-chip { animation: none; }
+}
+
+/* ==========================================================================
+   25. ABOUT — "HOW WE ADD VALUE"
+   A compact three-step strip that closes the About section. Deliberately
+   lighter than the Process cards: no connectors, no top rule, smaller type —
+   it should settle the section, not compete with it.
+   ========================================================================== */
+.value-block {
+  margin-top: clamp(1.75rem, 4vh, 3rem);
+  padding-top: clamp(1.25rem, 3vh, 2rem);
+  border-top: 1px solid var(--vv-line);
+}
+
+.value-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vv-blue);
+  text-align: center;
+  margin: 0 0 1rem;
+}
+
+.value-card {
+  height: 100%;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem 1rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(26, 86, 219, 0.4);
+  box-shadow: 0 12px 28px -24px var(--vv-shadow);
+}
+
+.value-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.value-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.55rem;
+  background: var(--vv-blue-soft);
+  color: var(--vv-blue);
+  flex-shrink: 0;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.value-icon svg { width: 0.95rem; height: 0.95rem; }
+.value-card:hover .value-icon { background: var(--vv-blue); color: var(--vv-surface); }
+[data-theme="dark"] .value-card:hover .value-icon { color: #0b1524; }
+
+.value-num {
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--vv-blue);
+  opacity: 0.2;
+  letter-spacing: -0.03em;
+}
+
+.value-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.value-text {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--vv-slate);
+  margin: 0;
+}
+
+/* ==========================================================================
+   26. TESTIMONIALS
+   Cards match the site's existing card language. The placeholder state uses a
+   dashed border and muted type so an empty card reads as "not filled in yet"
+   rather than as a real but blank review.
+   ========================================================================== */
+.t-card {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  background: var(--vv-surface);
+  border: 1px solid var(--vv-line);
+  border-radius: 1rem;
+  padding: 1.1rem 1.15rem 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.t-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(26, 86, 219, 0.4);
+  box-shadow: 0 14px 32px -26px var(--vv-shadow);
+}
+
+/* Quotation mark, kept quiet so it never competes with the words */
+.t-quote {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  color: var(--vv-blue);
+  opacity: 0.16;
+}
+
+.t-quote svg { width: 1.6rem; height: 1.6rem; }
+
+.t-stars { display: inline-flex; gap: 0.12rem; color: #f5a623; margin-bottom: 0.55rem; }
+.t-stars svg { width: 0.85rem; height: 0.85rem; }
+
+.t-text {
+  margin: 0 0 0.9rem;
+  padding-right: 1.5rem;   /* clears the quote mark */
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--vv-slate);
+  flex-grow: 1;
+}
+
+.t-name {
+  margin: 0;
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vv-navy);
+}
+
+.t-role {
+  margin: 0.1rem 0 0;
+  font-size: 0.78rem;
+  color: var(--vv-slate);
+}
+
+/* Placeholder state — visibly awaiting real content */
+.t-card.is-empty {
+  border-style: dashed;
+  background: transparent;
+}
+
+.t-card.is-empty:hover { transform: none; box-shadow: none; border-color: var(--vv-line); }
+.t-card.is-empty .t-text { font-style: italic; opacity: 0.75; }
+
+.t-name-empty {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vv-blue);
+  opacity: 0.7;
+}
