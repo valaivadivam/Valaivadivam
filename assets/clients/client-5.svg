@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200" role="img" aria-label="Client Partner 5 placeholder logo">
+  <rect width="400" height="200" fill="none"/>
+  <rect x="38" y="64" width="72" height="72" rx="18" fill="#E8F0FE"/>
+  <path d="M60 88l14 26 14-26" fill="none" stroke="#1A56DB" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="130" y="78" width="196" height="16" rx="8" fill="#0B2545" opacity="0.72"/>
+  <rect x="130" y="106" width="128" height="12" rx="6" fill="#1A56DB" opacity="0.5"/>
+  <text x="130" y="146" font-family="Inter, Arial, sans-serif" font-size="15" fill="#8298B4">Client Partner 5</text>
+</svg>
