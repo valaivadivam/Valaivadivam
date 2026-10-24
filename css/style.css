@@ -680,13 +680,19 @@ h1, h2, h3, h4 {
   justify-content: center;
   padding: 0 1.25rem;
   background: var(--vv-surface);
-  border: 1px solid var(--vv-line);
+
+  /* border: 1px solid var(--vv-line);
   border-radius: 1rem;
   box-shadow: 0 8px 24px -20px rgba(11, 37, 69, 0.5);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease; */
+
+  border: none;
+  border-radius: 1rem;
+  box-shadow: none;
+  transition: none;
 }
 
-.client-card:hover { border-color: rgba(26, 86, 219, 0.4); }
+/* .client-card:hover { border-color: rgba(26, 86, 219, 0.4); } */
 
 .client-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
