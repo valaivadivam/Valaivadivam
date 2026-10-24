@@ -265,8 +265,8 @@ const VV_TESTIMONIALS = [
    Transparent PNG or SVG at roughly 400 × 200 px works best.
    -------------------------------------------------------------------------- */
 const VV_CLIENTS = [
-  { name: "Client Partner 1", image: "assets/clients/client-1.svg" },
-  { name: "Client Partner 2", image: "assets/clients/client-2.svg" },
+  { name: "Client Partner 1", image: "assets/clients/hs-motors-logo.png" },
+  { name: "Client Partner 2", image: "assets/clients/sri-lakshmi-mart-logo.png" },
   { name: "Client Partner 3", image: "assets/clients/client-3.svg" },
   { name: "Client Partner 4", image: "assets/clients/client-4.svg" },
   { name: "Client Partner 5", image: "assets/clients/client-5.svg" },
